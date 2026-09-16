@@ -1,17 +1,46 @@
 ---
-
+import Layout from '../layouts/layout.astro';
+import { contactData } from '../data/contactData.js';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout title="Under uppbyggnad">
+  <div class="centered-content">
+    <h1>Webbsida under uppbyggnad</h1>
+    <p>För offert och frågor, kontakta <a href={`mailto:${contactData.email}`}>{contactData.email}</a></p>
+  </div>
+</Layout>
+
+<style>
+  .centered-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 50vh; 
+    padding: 2rem 0;
+  }
+
+  h1 {
+    font-size: 2rem;
+    color: var(--color-text);
+    margin-bottom: 1rem;
+    font-weight: 400;
+  }
+
+  p {
+    font-size: 1.1rem;
+    color: var(--color-text);
+    opacity: 0.9;
+  }
+
+  a {
+    color: var(--color-steelblue);
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+</style>

@@ -1,0 +1,79 @@
+---
+import Layout from '../layouts/layout.astro';
+---
+
+<Layout title="Kontakt | Economic Tool AB">
+  <div class="container about-page">
+    
+    <section class="about-content">
+      <h1>Om Företaget</h1>
+      <p class="lead">Praktisk erfarenhet möter teoretisk precision.</p>
+      
+      <p>Som ett enmansbolag erbjuder jag flexibilitet, korta beslutsvägar och ett personligt engagemang i varje projekt. Min unika styrka ligger i kombinationen av att både förstå den praktiska tillverkningen av stansverktyg, samt besitta den tekniska kompetensen för att konstruera dem i CAD-miljö.</p>
+      
+      <p>Detta innebär att när du anlitar mig för en konstruktion, vet du att ritningarna är gjorda av någon som faktiskt förstår hur verktyget ska byggas och fungera ute i verkligheten på verkstadsgolvet.</p>
+    </section>
+
+    <section class="contact-card">
+      <h2>Hör av dig</h2>
+      <p>Oavsett om du behöver beställa ett specifikt stansverktyg eller behöver förstärkning på konstruktionssidan, är du varmt välkommen att höra av dig.</p>
+      
+      <ul class="contact-details">
+        <li><strong>E-post:</strong> <a href="mailto:info@foretaget.se">info@foretaget.se</a></li>
+        <li><strong>Telefon:</strong> 070-123 45 67</li>
+        <li><strong>Adress:</strong> Verkstadsvägen 1, 123 45 Staden</li>
+      </ul>
+    </section>
+
+  </div>
+</Layout>
+
+<style>
+  .about-page {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 4rem;
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+  }
+  @media (min-width: 768px) {
+    .about-page {
+      grid-template-columns: 3fr 2fr; /* Texten tar mer plats, kontaktkortet mindre */
+    }
+  }
+  .about-content h1 {
+    color: var(--color-steelblue);
+    margin-bottom: 0.5rem;
+  }
+  .lead {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--color-text);
+    margin-bottom: 1.5rem;
+  }
+  .about-content p {
+    margin-bottom: 1rem;
+  }
+  
+  .contact-card {
+    background-color: var(--color-bg-alt);
+    padding: 2rem;
+    border-radius: 8px;
+    border-top: 4px solid var(--color-steelblue);
+    height: fit-content;
+  }
+  .contact-card h2 {
+    margin-bottom: 1rem;
+  }
+  .contact-details {
+    list-style: none;
+    margin-top: 1.5rem;
+  }
+  .contact-details li {
+    margin-bottom: 0.75rem;
+  }
+  .contact-details a {
+    color: var(--color-steelblue);
+    text-decoration: underline;
+  }
+</style>

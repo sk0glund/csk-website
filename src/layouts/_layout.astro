@@ -1,0 +1,125 @@
+---
+import '../styles/global.css'
+import {contactData} from '../data/contactData.js'
+
+const {title} = Astro.props;
+---
+<html lang="sv">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>{title}</title>
+    </head>
+    <body>
+        <header class="site-header">
+            <div class="container header-content">
+                <a href="/" class="logo">
+                    <span class="logo-text">{contactData.company}</span>
+                </a>
+            <nav>
+                <a href="/about">Kontakt</a>
+            </nav>
+            </div>
+        </header>
+
+        <main>
+            <slot />
+        </main>
+
+        <footer class="site-footer">
+            <div class="container footer-grid">
+                <div class="footer-col">
+                    <h3>{contactData.company}</h3>
+                    <p>Org.nr: {contactData.orgnr}</p>
+                    <p class="copyright">&copy; 2026 Alla rättigheter reserverade.</p>
+                </div>
+                <div class="footer-col contact-col">
+                    <p></p>
+                    <p><a href="mailto:{contactData.email}">{contactData.email}</a></p>
+                    <p><a href="{contactData.linkedinU}">{contactData.linkedin}</a></p>
+                    <p><a href="{contactData.phoneLink}">{contactData.phone}</a></p>
+                </div>
+            </div>
+            
+        </footer>
+    </body>
+</html>
+
+<style>
+  /* Header-stilar (samma som tidigare) */
+  .site-header {
+    background-color: var(--color-bg);
+    border-bottom: 3px solid var(--color-steelblue);
+    padding: 1.5rem 0;
+  }
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .logo-text {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-steelblue);
+  }
+  .nav-link {
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+  }
+
+  .site-footer {
+    background-color: var(--color-footer-bg);
+    color: var(--color-footer-text);
+    padding: 4rem 0;
+    margin-top: auto;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .footer-grid {
+      grid-template-columns: 1fr 1fr;
+      align-items: start;
+    }
+    
+    .contact-col {
+      text-align: right;
+    }
+  }
+
+  .footer-col h3 {
+    color: var(--color-steelblue);
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+    font-weight: 700;
+  }
+
+  .footer-col p {
+    margin-bottom: 0.4rem;
+    font-size: 0.95rem;
+    opacity: 0.9;
+  }
+
+  .copyright {
+    margin-top: 1.5rem;
+    font-size: 0.85rem !important;
+    opacity: 0.6 !important;
+  }
+
+  .footer-link {
+    color: var(--color-footer-text);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.3s ease;
+  }
+
+  .footer-link:hover {
+    border-bottom-color: var(--color-steelblue);
+  }
+</style>

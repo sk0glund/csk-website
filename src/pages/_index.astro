@@ -1,0 +1,118 @@
+---
+import Layout from '../layouts/layout.astro';
+import { Image, getImage } from 'astro:assets';
+
+import heroImage from '../assets/heroImage.jpg';
+import tillverkningImage from '../assets/tillverkning.jpg';
+import konsultImage from '../assets/konsult.png';
+
+const optimizedHero = await getImage({ src: heroImage, format: 'webp' });
+---
+
+<Layout title="Economic Tool AB">
+  <section class="hero" style={`background-image: url(${optimizedHero.src});`}>
+    <div class="hero-overlay"></div>
+    <div class="container hero-content">
+      <h1>Economic Tool</h1>
+      <p>Stans och pressverktyg för metallindustrin. Konstruktörskonsultation med lång erfarenhet av verktygskonstruktion.</p>
+      <a href="/about" class="btn">Kontakta mig</a>
+    </div>
+  </section>
+
+  <section class="services container">
+    <div class="service-card">
+      <Image src={tillverkningImage} alt="Stansverktyg" class="service-image" />
+      <div class="service-text">
+        <h2>Verktygssystem för Stansning</h2>
+        <p>Enkla och kostnadseffektiva stansverktyg för användning i pressar. Något om fördel, något om verktyget/metoden.</p>
+        <a href="mailto:info@foretaget.se" class="btn-link">Mejla för förfrågan &rarr;</a>
+      </div>
+    </div>
+
+    <div class="service-card">
+      <Image src={konsultImage} alt="Verktygskonstruktion i CAD" class="service-image" />
+      <div class="service-text">
+        <h2>Konsulttjänster</h2>
+        <p>Lång erfarenhet inom verktygskonstruktion, stans och pressverktyg. Vetefan vad man ska skriva här men något bra.</p>
+        <a href="/about" class="btn-link">Kontakta mig&rarr;</a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .hero {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    padding: 8rem 0;
+    color: white;
+    text-align: center;
+  }
+  .hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(26, 32, 44, 0.3);
+    z-index: 1;
+  }
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .hero h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+	color: var(--color-stb);
+  }
+  .hero p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    font-weight: 300;
+  }
+  
+  .services {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    margin-top: 4rem;
+  }
+  @media (min-width: 768px) {
+    .services {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  .service-card {
+    background-color: var(--color-bg-alt);
+    border-radius: 3px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  }
+  .service-image {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    display: block;
+  }
+  .service-text {
+    padding: 2rem;
+  }
+  .service-text h2 {
+    color: var(--color-text);
+    margin-bottom: 1rem;
+  }
+  .btn-link {
+    display: inline-block;
+    margin-top: 1rem;
+    color: var(--color-text);
+    font-weight: 600;
+  }
+  .btn-link:hover {
+    text-decoration: underline;
+  }
+</style>

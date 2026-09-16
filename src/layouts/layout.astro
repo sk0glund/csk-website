@@ -1,0 +1,118 @@
+---
+import '../styles/global.css';
+import { contactData } from '../data/contactData.js';
+
+const { title } = Astro.props;
+---
+
+<html lang="sv">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-content">
+        <a href="/" class="logo">
+          
+        </a>
+      </div>
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div class="footer-col">
+          <h3 class="footer-title">{contactData.company}</h3>
+          <p>Org.nr: {contactData.orgnr}</p>
+          <p class="copyright">© 2026 All rights reserved.</p>
+        </div>
+
+        <div class="footer-col contact-col">
+          <p>{contactData.address}</p>
+          <p>{contactData.zip}</p>
+          <p><a href={`mailto:${contactData.email}`} class="footer-link">{contactData.email}</a></p>
+          <p>{contactData.phone}</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
+
+<style>
+  .site-header {
+    background-color: var(--color-bg);
+    border-bottom: 3px solid var(--color-steelblue);
+    padding: 1.5rem 0;
+  }
+  .header-content {
+    display: flex;
+    justify-content: center; /* Centrerar loggan när menyn är borta */
+    align-items: center;
+  }
+  .logo-text {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-steelblue);
+  }
+
+  .site-footer {
+    background-color: var(--color-footer-bg);
+    color: var(--color-footer-text);
+    padding: 4rem 0;
+    margin-top: auto; 
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1fr; 
+    gap: 2.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .footer-grid {
+      grid-template-columns: 1fr 1fr; 
+      align-items: start;
+    }
+    .contact-col {
+      text-align: right; 
+    }
+  }
+
+  /* Ändringar för att göra företagsnamnet mindre utstickande */
+  .footer-title {
+    color: var(--color-footer-text); /* Använder samma ljusgrå/vita färg som övrig text istället för steelblue */
+    font-size: 1rem; /* Betydligt mindre textstorlek */
+    font-weight: 400; /* Tar bort fetstilen */
+    margin-bottom: 0.5rem;
+    opacity: 0.8; /* Gör den lite transparent för att smälta in ännu mer */
+  }
+
+  .footer-col p {
+    margin-bottom: 0.4rem;
+    font-size: 0.95rem;
+    opacity: 0.9;
+  }
+
+  .copyright {
+    margin-top: 1.5rem;
+    font-size: 0.85rem !important;
+    opacity: 0.6 !important;
+  }
+
+  .footer-link {
+    color: var(--color-footer-text);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.3s ease;
+  }
+
+  .footer-link:hover {
+    border-bottom-color: var(--color-steelblue);
+  }
+</style>
